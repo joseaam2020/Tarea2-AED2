@@ -1,33 +1,16 @@
 #include <iostream>
+#include "FuentePoder.h"
+#include "Circuito.h"
 
 using namespace std;
 
-class Bateria{
-    private:
-        int tension;
-        int intensidad;
-    public:
-        Bateria(int tension, int intensidad){
-            this->tension = tension;
-            this->intensidad = intensidad;
-        };
-        int getTension(){return this->tension;};
-        int getIntensidad(){return this->intensidad;};
-};
+int main(){
+    FuentePoder::getInstance().setIntensidad(1);
+    FuentePoder::getInstance().setTension(3);
 
-class Circuito{
-    private:
-        int tensionNecesaria;
-        int intensidadNecesaria;
-    public:
-        Circuito(int tension, int intensidad){
-            this->intensidadNecesaria = intensidad;
-            this->tensionNecesaria = tension;
-        };
-        int getInstensidadNecesaria(){
-            return this->intensidadNecesaria;
-        };
-        int getTensionNecesaria(){
-            return this->tensionNecesaria;
-        };
-};
+    Circuito circuito = Circuito(4,1);
+    AdaptadorTension nuevaFuente = AdaptadorTension(&circuito);
+    bool suficiente = circuito.suficienteTension(nuevaFuente);
+    cout << suficiente << endl;
+}
+
