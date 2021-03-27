@@ -12,5 +12,7 @@ int main(){
     AdaptadorTension nuevaFuente = AdaptadorTension(&circuito);
     bool suficiente = circuito.suficienteTension(nuevaFuente);
     cout << suficiente << endl;
+    suficiente = circuito.suficienteTension(FuentePoder::getInstance());
+    cout << suficiente << endl;
 }
 

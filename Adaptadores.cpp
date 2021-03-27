@@ -6,7 +6,7 @@ using namespace std;
 AdaptadorTension::AdaptadorTension(Circuito* circuito){
     this->circuito = circuito;
     this->setTension(circuito->getTensionNecesaria());
-    this->resistencia = this->getTension()/this->getIntensidad();
+    this->resistencia = this->getTension()/FuentePoder::getInstance().getIntensidad();
 };
 
 int AdaptadorTension::getResistencia(){return this->resistencia;};
